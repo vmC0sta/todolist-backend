@@ -18,20 +18,20 @@ public class ToDoListController implements Controller<ToDoList> {
     @Autowired
     ToDoListRepository toDoListRepository;
 
-    @PostMapping
+    @PostMapping("/cadastrar")
     @Override
     public ResponseEntity<ToDoList> salvar(@RequestBody ToDoList toDoList) {
         toDoListRepository.save(toDoList);
         return ResponseEntity.status(HttpStatus.CREATED).body(toDoList);
     }
 
-    @GetMapping
+    @GetMapping("/consultar")
     @Override
     public ResponseEntity<List<ToDoList>> consultar() {
         return ResponseEntity.status(HttpStatus.OK).body(toDoListRepository.findAll());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/consultar/{id}")
     @Override
     public ResponseEntity<Object> consultar(@PathVariable("id") Long id) {
         Optional<ToDoList> toDoListOptional = toDoListRepository.findById(id);
@@ -43,7 +43,7 @@ public class ToDoListController implements Controller<ToDoList> {
         }
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/alterar/{id}")
     @Override
     public ResponseEntity<Object> alterar(@PathVariable("id") Long id, @RequestBody ToDoList toDoList) {
         Optional<ToDoList> toDoListOptional = toDoListRepository.findById(id);
@@ -60,7 +60,7 @@ public class ToDoListController implements Controller<ToDoList> {
         }
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/excluir/{id}")
     @Override
     public ResponseEntity<Object> excluir(@PathVariable("id") Long id) {
         Optional<ToDoList> optionalToDoList = toDoListRepository.findById(id);
