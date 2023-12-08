@@ -1,6 +1,7 @@
 package com.example.todolist.controllers;
 
 import com.example.todolist.entities.ToDoList;
+import com.example.todolist.repositories.ToDoListRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -8,6 +9,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/toDoList")
 public class ToDoListController implements Controller<ToDoList> {
+
+    ToDoListRepository toDoListRepository;
+
     @PostMapping
     @Override
     public ResponseEntity<ToDoList> salvar(ToDoList toDoList) {
