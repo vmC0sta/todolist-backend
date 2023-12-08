@@ -1,9 +1,9 @@
 package com.example.todolist.entities;
 
 public enum PrioridadeEnum {
-    BAIXA(0),
-    MEDIA(1),
-    ALTA(2);
+    BAIXA(1),
+    MEDIA(2),
+    ALTA(3);
     private int valor;
     PrioridadeEnum(int valor) {
     }
